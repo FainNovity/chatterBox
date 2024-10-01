@@ -57,7 +57,7 @@ socket.on('exitUser',async (username)=>{
 });
 });
 
-httpServer.listen(env.PORT || 8008,()=>{console.log("running");
+httpServer.listen(process.env.PORT || 8008,()=>{console.log("running");
 });
 
 /*
