@@ -1,5 +1,6 @@
 const http = require('http');
 const socketIo = require('socket.io');  
+require('dotenv').config();
 
 const httpServer = http.createServer();
 const io = new socketIo.Server(httpServer, {
@@ -56,7 +57,7 @@ socket.on('exitUser',async (username)=>{
 });
 });
 
-httpServer.listen(8008,()=>{console.log("running");
+httpServer.listen(env.PORT || 8008,()=>{console.log("running");
 });
 
 /*
