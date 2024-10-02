@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Main from './components/mainUI/Main';
@@ -8,12 +8,9 @@ import {io} from "socket.io-client";
 import Box from './components/portHandler/Box';
 
 const socket = io(process.env.SERVER);
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
     <BrowserRouter>
         <Routes>
             <Route path='/' element={<App socket ={socket} />} />
         </Routes>
-    </BrowserRouter>
-);
+    </BrowserRouter>, document.getElementById('root'));
