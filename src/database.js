@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const port = require('./dataSchema');
 require('dotenv').config();
-console.log(process.env.REACT_APP_MONGO);
+console.log(process.env.MONGO);
 
-mongoose.connect(process.env.REACT_APP_MONGO).then(()=>{
+mongoose.connect(process.env.MONGO).then(()=>{
     const express = require('express');
     const cors = require('cors');
     const bodyParser = require('body-parser');
