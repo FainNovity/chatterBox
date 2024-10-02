@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 const port = require('./dataSchema');
+require('dotenv').config();
+console.log(process.env.REACT_APP_MONGO);
 
-mongoose.connect("mongodb+srv://23010101189:6gwbfJbStcA1ltMp@cluster-1.x5viu.mongodb.net/chatter").then(()=>{
+mongoose.connect(process.env.REACT_APP_MONGO).then(()=>{
     const express = require('express');
     const cors = require('cors');
     const bodyParser = require('body-parser');
     const app = express();
 
     app.use(cors({
-        origin:'*'
+        origin:[process.env.SERVER,process.env.MAIN]
     }));
     app.use(bodyParser.urlencoded());
 

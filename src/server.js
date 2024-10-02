@@ -1,11 +1,10 @@
 const http = require('http');
 const socketIo = require('socket.io');  
-require('dotenv').config();
 
 const httpServer = http.createServer();
 const io = new socketIo.Server(httpServer, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: process.env.MAIN,
         methods: ['GET','POST']
     }
 })
@@ -57,7 +56,7 @@ socket.on('exitUser',async (username)=>{
 });
 });
 
-httpServer.listen(process.env.PORT || 8008,()=>{console.log("running");
+httpServer.listen(8008,()=>{console.log("running");
 });
 
 /*

@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {io} from "socket.io-client";
 import Box from './components/portHandler/Box';
 
-const socket = io("http://localhost:8008");
+const socket = io(process.env.SERVER);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

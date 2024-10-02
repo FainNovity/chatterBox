@@ -24,7 +24,7 @@ function ChatGround(props){
             console.log("setting up")
         },[socket]);
         useEffect(()=>{
-            fetch("http://localhost:9009/"+port).then(res=>res.json()).then(res=>setData(res));
+            fetch(process.env.DB+port).then(res=>res.json()).then(res=>setData(res));
         },[]);
 
         scrollRef.current?.scrollIntoView({behavior: 'smooth'});
