@@ -25,11 +25,11 @@ socket.emit('session',socket.username);
 socket.join(socket.port);
 
 
-fetch("http://localhost:9009/"+socket.port);
+fetch(process.env.DB+socket.port);
 
 socket.on('chat',async ({user,message,port})=>{
     
-    await fetch("http://localhost:9009/"+port,{
+    await fetch(process.env.DB+port,{
         method:'PATCH',
         body:new URLSearchParams({chat:[user,message]})
     });
@@ -39,7 +39,7 @@ socket.on('newUser',(username)=>{
     socket.in(socket.port).fetchSockets().then((data)=>{
         socket.emit('people',data.map(roomClient=>roomClient.username+ " joined conversation."));
     });
-    fetch("http://localhost:9009/"+socket.port,{
+    fetch(process.env.DB+socket.port,{
         method:'PATCH',
         body:new URLSearchParams({chat:["",username+" joined conversation."]})
     });
@@ -49,7 +49,7 @@ socket.on('newUser',(username)=>{
 socket.on('exitUser',async (username)=>{
     socket.broadcast.to(socket.port).emit("exiting",username+" left convorsation");
     if(await socket.in(socket.port).fetchSockets().length-1==0){
-        await fetch("http://localhost:9009/"+socket.port,{
+        await fetch(process.env.DB+socket.port,{
             method:'DELETE'
         });
     }
