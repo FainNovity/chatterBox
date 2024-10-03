@@ -7,16 +7,9 @@ console.log(process.env.DB," ",process.env.MAIN);
 let whitelist = [process.env.DB,process.env.MAIN];
 const io = new socketIo.Server(httpServer, {
     cors: {
-        origin: function (origin, callback) {
-            if (whitelist.indexOf(origin) !== -1) {
-              callback(null, true)
-                }
-            else {
-              callback(new Error('Not allowed by CORS'))
-            }
-      }
+        origin:"*"
     }
-})
+});
 
 io.use(async (socket,next)=>{
     const {username, port} = socket.handshake.auth;
@@ -63,5 +56,5 @@ socket.on('exitUser',async (username)=>{
 });
 });
 
-httpServer.listen(8008,()=>{console.log("running");
+httpServer.listen(process.env.PORT || 8008,()=>{console.log("running");
 });
