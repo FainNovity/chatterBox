@@ -3,7 +3,7 @@ const socketIo = require('socket.io');
 
 const httpServer = http.createServer();
 require('dotenv').config();
-consoloe.log(process.env.DB," ",process.env.MAIN);
+console.log(process.env.DB," ",process.env.MAIN);
 const io = new socketIo.Server(httpServer, {
     cors: {
         origin: [process.env.DB,process.env.MAIN]
