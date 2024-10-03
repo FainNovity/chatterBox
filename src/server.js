@@ -4,9 +4,17 @@ const socketIo = require('socket.io');
 const httpServer = http.createServer();
 require('dotenv').config();
 console.log(process.env.DB," ",process.env.MAIN);
+let whitelist = [process.env.DB,process.env.MAIN];
 const io = new socketIo.Server(httpServer, {
     cors: {
-        origin: [process.env.DB,process.env.MAIN]
+        origin: function (origin, callback) {
+            if (whitelist.indexOf(origin) !== -1) {
+              callback(null, true)
+                }
+            else {
+              callback(new Error('Not allowed by CORS'))
+            }
+      }
     }
 })
 
