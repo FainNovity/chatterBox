@@ -7,7 +7,7 @@ console.log(process.env.DB," ",process.env.MAIN);
 let whitelist = [process.env.DB,process.env.MAIN];
 const io = new socketIo.Server(httpServer, {
     cors: {
-        origin:"*"
+        origin:[process.env.MAIN,process.env.DB]
     }
 });
 
