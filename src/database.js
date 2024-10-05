@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGO).then(()=>{
     const app = express();
 
     app.use(cors({
-        origin:[process.env.SERVER,process.env.MAIN]
+        origin:[process.env.MAIN,process.env.SERVER]
     }));
     app.use(bodyParser.urlencoded());
 
