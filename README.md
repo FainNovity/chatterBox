@@ -1,16 +1,14 @@
-# What's project about?
+## What's project about?
 
 it is chatting system trial which let's you connect with people on same port.
 all the chats are stored in database.
 
 # Tech used in project
 
-As a framework, I've used react.
-For seamless data transfering, used web socket-io.
-To control data transfers in database, used Express.
+As a framework, I've used react./
+For seamless data transfering, used web socket-io./
+To control data transfers in database, used Express./
 
-# Where to try it?
-visit link : [chatterBox](https://chatterbox-portal.netlify.app/)
 
 # How does it work??
 
@@ -18,6 +16,9 @@ visit link : [chatterBox](https://chatterbox-portal.netlify.app/)
 2) take a username and enter the 6-len port that you want to join.
 3) BOOM! you are in chat, now! but, wait until the messages are rendered.
 4) Do not refresh page anytime during chats. You'll have to rejoin chat. If chats are not refreshing, wait because, they do some process in backend.
+
+# Where to try it?
+visit link : [chatterBox](https://chatterbox-portal.netlify.app/)
 
 # Getting Started with Create React App
 
